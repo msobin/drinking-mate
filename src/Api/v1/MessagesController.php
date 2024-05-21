@@ -4,18 +4,12 @@ declare(strict_types=1);
 
 namespace App\Api\v1;
 
-use ApiPlatform\Validator\Exception\ValidationException;
-use ApiPlatform\Validator\ValidatorInterface;
 use App\Entity\Mate;
-use App\Entity\MateMessage;
 use App\Messenger\Command\MateMessageCommand;
 use App\Messenger\Query\GetMessagesQuery;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
 use Symfony\Component\Messenger\MessageBusInterface;
-use Symfony\Component\Messenger\Stamp\HandledStamp;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
 
