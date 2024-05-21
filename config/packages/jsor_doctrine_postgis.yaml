@@ -1,0 +1,14 @@
+services:
+    Jsor\Doctrine\PostGIS\Event\ORMSchemaEventSubscriber:
+        tags: [{ name: doctrine.event_subscriber, connection: default }]
+
+doctrine:
+    dbal:
+        mapping_types:
+            _text: string
+        types:
+            geometry: 'Jsor\Doctrine\PostGIS\Types\GeometryType'
+    orm:
+        dql:
+            numeric_functions:
+                ST_Distance: App\Infrastructure\ST_Distance
