@@ -19,20 +19,50 @@ No more lonely nights at the bar – with DrinkingMate API, you're just a tap aw
 Cheers to new connections and unforgettable nights!
 
 ### Built With
-* [![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white)](http://php.net/)
-* [![Symfony](https://img.shields.io/badge/symfony-%23000000.svg?style=for-the-badge&logo=symfony&logoColor=white)](https://symfony.com/)
-* [![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
-* [![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
-
-### Prerequisites
+* PHP (Symfony)
+* PostgreSQL
 * Docker
-* Task (https://taskfile.dev/)
+
+[//]: # (* [![PHP]&#40;https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white&#41;]&#40;http://php.net/&#41;)
+[//]: # (* [![Symfony]&#40;https://img.shields.io/badge/symfony-%23000000.svg?style=for-the-badge&logo=symfony&logoColor=white&#41;]&#40;https://symfony.com/&#41;)
+[//]: # (* [![Postgres]&#40;https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white&#41;]&#40;https://www.postgresql.org/&#41;)
+[//]: # (* [![Docker]&#40;https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white&#41;]&#40;https://www.docker.com/&#41;)
+
+### Requirements
+* [Docker](https://www.docker.com/)
+* Docker-compose (comes with Docker)
+* [Task](https://taskfile.dev/)
 
 ### Installation
 
-Will be added soon
+Clone the repo
+   ```sh
+    git clone git@github.com:msobin/drink-mate.git
+   ```
+Run the following command in project directory to start the project
+   ```sh
+    task up
+   ```
+Open your browser and navigate to [http://localhost:80/api/v1/doc](http://localhost:80/api/v1/doc)
 
-## Usage
+*The ports used can be overridden by creating a docker-compose.override.yaml file with the following contents:*
+```yaml
+version: '3'
 
-[API specification on swaggerhub.com](https://app.swaggerhub.com/apis/maximsobin-003/drink-mate_api/1.0.0)
+services:
+  nginx:
+    ports: !override
+      - "8080:80"
 
+  postgres:
+    ports: !override
+      - "54321:5432"
+```
+
+### Notes
+
+* The project is still in development and some features may not be fully implemented.
+
+### License
+
+[MIT](https://opensource.org/licenses/MIT)
