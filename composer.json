@@ -1,6 +1,6 @@
 {
     "name": "msobin/drink-mate",
-    "license": "GPL",
+    "license": "MIT",
     "type": "project",
     "require": {
         "php": "^8.2",
