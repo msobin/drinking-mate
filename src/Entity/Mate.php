@@ -12,6 +12,7 @@ use Jsor\Doctrine\PostGIS\Types\PostGISType;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use OpenApi\Attributes as OA;
 
 #[ORM\Entity(repositoryClass: MateRepository::class)]
 #[ORM\Index(
@@ -25,6 +26,7 @@ class Mate implements UserInterface, \JsonSerializable
     public const STATUS_INACTIVE = 0;
 
     #[ORM\Id, ORM\Column(type: UuidType::class)]
+    #[OA\Property(type: 'string', format: 'uuid')]
     #[Groups(['api'])]
     private Uuid $id;
 
@@ -55,6 +57,7 @@ class Mate implements UserInterface, \JsonSerializable
 
     #[Assert\NotBlank]
     #[ORM\Column(type: 'bigint')]
+    #[OA\Property(type: 'integer')]
     #[Groups(['api'])]
     private int $lastActiveAt;
 

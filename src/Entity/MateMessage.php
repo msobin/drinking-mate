@@ -8,6 +8,7 @@ use App\Repository\MateMessageRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use OpenApi\Attributes as OA;
 
 #[ORM\Entity(repositoryClass: MateMessageRepository::class)]
 #[ORM\Index(fields: ['toId'])]
@@ -16,12 +17,14 @@ class MateMessage implements \JsonSerializable
 {
     #[ORM\Id, ORM\Column(type: UuidType::class)]
     #[Groups(['api'])]
+    #[OA\Property(type: 'string', format: 'uuid')]
     private Uuid $id;
 
     #[ORM\Id, ORM\Column(type: UuidType::class)]
     private Uuid $toId;
 
     #[ORM\Id, ORM\Column(type: UuidType::class)]
+    #[OA\Property(type: 'string', format: 'uuid')]
     #[Groups(['api'])]
     private Uuid $fromId;
 
@@ -32,6 +35,7 @@ class MateMessage implements \JsonSerializable
 
     #[Assert\NotBlank]
     #[ORM\Column(type: 'bigint')]
+    #[OA\Property(type: 'integer')]
     #[Groups(['api'])]
     private int $createdAt;
 
