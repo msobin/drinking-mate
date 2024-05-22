@@ -6,10 +6,15 @@
 [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/maximsobin)
 
 <div align="center">
-  <a href="https://github.com/msobin/drink-mate">
-    <img src="images/logo.png" alt="Logo" width="200">
-  </a>
+    <a href="https://github.com/msobin/drink-mate">
+        <img src="images/logo.png" alt="Logo" width="200">
+    </a>
 </div>
+<br><br>
+<details>
+    <summary>Screenshot</summary>
+    <img src="images/screenshot-1.png" alt="Logo" width="500">
+</details>
 
 ## About The Project
 Your go-to solution for finding the perfect drinking buddy!
