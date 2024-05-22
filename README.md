@@ -9,8 +9,6 @@
   <a href="https://github.com/msobin/drink-mate">
     <img src="images/logo.png" alt="Logo" width="200">
   </a>
-
-<h3 align="center">DrinkingMate API</h3>
 </div>
 
 ## About The Project
