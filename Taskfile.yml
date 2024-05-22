@@ -1,22 +1,85 @@
 version: '3'
 
+vars:
+  PHP: "{{if not .LOCALLY}}docker compose exec -it php{{end}}"
+
+env:
+  APP_ENV: dev
+
+dotenv:
+  - '.env.{{.APP_ENV}}.local'
+  - '.env.{{.APP_ENV}}'
+  - '.env.local'
+  - '.env'
+
 tasks:
-  up: docker compose up --build --remove-orphans
+  up:
+    cmds:
+      - docker compose up --build --detach --remove-orphans
+      - task: install
+      - task: db
+      - task: jwt
+
+  install:
+    cmd: "{{.PHP}} composer install"
+    sources:
+      - composer.json
+      - composer.lock
+    generates:
+      - vendor/autoload.php
+
+  db:
+    deps: [install]
+    cmds:
+      - "{{.PHP}} bin/console doctrine:database:create --if-not-exists"
+      - "{{.PHP}} bin/console doctrine:migrations:migrate --no-interaction"
+
+  diff: "{{.PHP}} bin/console doctrine:migrations:diff"
+
+  migrate: "{{.PHP}} bin/console doctrine:migrations:migrate"
+
+  jwt:
+    cmd: "{{.PHP}} bin/console lexik:jwt:generate-keypair"
+    generates:
+      - config/jwt/private.pem
+      - config/jwt/public.pem
+
+  composer-validate: "{{.PHP}} composer validate --strict --no-check-publish"
+
+  composer-require:
+    deps: [install]
+    cmd: "{{.PHP}} vendor/bin/composer-require-checker check"
+
+  composer-unused:
+    deps: [install]
+    cmd: "{{.PHP}} vendor/bin/composer-unused"
+
+  composer-audit: "{{.PHP}} composer audit"
+
+  composer-normalize:
+    deps: [ install ]
+    cmds:
+      - "{{.PHP}} composer bump --dry-run"
+      - "{{.PHP}} composer normalize --dry-run --diff"
+
+  composer-normalize-fix:
+    deps: [ install ]
+    cmds:
+      - "{{.PHP}} composer bump"
+      - "{{.PHP}} composer normalize"
+
+  stop: docker compose stop
 
   down: docker compose down --remove-orphans --volumes
 
   chown: sudo chown -R $USER:$USER .
 
-  diff: docker compose exec php sh -c "php bin/console doctrine:migrations:diff"
-
-  migrate: docker compose exec php sh -c "php bin/console doctrine:migrations:migrate"
-
   sh: "docker compose exec php sh"
 
-  jwt: docker compose exec php sh -c "bin/console lexik:jwt:generate-keypair"
-
-  test_env: docker compose exec php sh -c "bin/console --env=test doctrine:database:create && bin/console --env=test doctrine:schema:create"
-
-  composer-bump: docker compose exec php sh -c "composer bump"
-
-  composer-normalize: docker compose exec php sh -c "composer normalize"
+  check:
+    cmds:
+      - task: composer-validate
+      - task: composer-require
+      - task: composer-unused
+      - task: composer-audit
+      - task: composer-normalize
