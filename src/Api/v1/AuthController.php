@@ -9,6 +9,7 @@ use App\Entity\Mate;
 use App\Infrastructure\Uuid\Uuid;
 use App\Operation\Command\WannaDrinkCommand;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
+use Nelmio\ApiDocBundle\Annotation\Security;
 use OpenApi\Attributes as OA;
 use OpenApi\Attributes\JsonContent;
 use OpenApi\Attributes\Property;
@@ -19,6 +20,7 @@ use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[OA\Tag(name: 'auth')]
+#[Security]
 final class AuthController extends ApiController
 {
     public function __construct(private readonly MessageBusInterface $messageBus)
