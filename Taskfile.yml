@@ -13,6 +13,10 @@ dotenv:
   - '.env'
 
 tasks:
+  up-dev:
+    cmds:
+      - docker compose up --build --remove-orphans
+
   up:
     cmds:
       - docker compose up --build --detach --remove-orphans
@@ -40,6 +44,9 @@ tasks:
 
   jwt:
     cmd: "{{.PHP}} bin/console lexik:jwt:generate-keypair"
+    status:
+      - test -f config/jwt/private.pem
+      - test -f config/jwt/public.pem
     generates:
       - config/jwt/private.pem
       - config/jwt/public.pem

@@ -36,7 +36,16 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data:rw
 
+  rabbitmq:
+    image: rabbitmq:3.12.14-management-alpine
+    environment:
+      - RABBITMQ_DEFAULT_USER=rmuser
+      - RABBITMQ_DEFAULT_PASS=rmpassword
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq
+
 volumes:
   php_history: ~
   php_socket: ~
   postgres_data: ~
+  rabbitmq: ~

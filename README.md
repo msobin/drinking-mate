@@ -58,10 +58,12 @@ services:
   nginx:
     ports: !override
       - "8080:80"
-
   postgres:
     ports: !override
       - "54321:5432"
+  rabbitmq:
+    ports: !override
+      - "15672:15672"
 ```
 
 ### Notes
