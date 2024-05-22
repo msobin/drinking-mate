@@ -50,7 +50,7 @@ final class AuthController extends ApiController
         );
 
         $this->messageBus->dispatch($command);
-        $this->messageBus->dispatch(new FileUploadCommand());
+        // $this->messageBus->dispatch(new FileUploadCommand());
 
         return new JsonResponse(
             ['token' => $JWTManager->create((new Mate())->setId($command->id))],
