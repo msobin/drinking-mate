@@ -16,3 +16,7 @@ tasks:
   jwt: docker compose exec php sh -c "bin/console lexik:jwt:generate-keypair"
 
   test_env: docker compose exec php sh -c "bin/console --env=test doctrine:database:create && bin/console --env=test doctrine:schema:create"
+
+  composer-bump: docker compose exec php sh -c "composer bump"
+
+  composer-normalize: docker compose exec php sh -c "composer normalize"
