@@ -34,4 +34,5 @@ Will be added soon
 
 ## Usage
 
-Will be added soon
+[API specification on swaggerhub.com](https://app.swaggerhub.com/apis/maximsobin-003/drink-mate_api/1.0.0)
+
