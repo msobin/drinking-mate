@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Messenger\CommandHandler;
+namespace App\Operations\CommandHandler;
 
 use App\Entity\MateMessage;
 use App\Infrastructure\Uuid\Uuid;
-use App\Messenger\Command\MateMessageCommand;
+use App\Operations\Command\MateMessageCommand;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 

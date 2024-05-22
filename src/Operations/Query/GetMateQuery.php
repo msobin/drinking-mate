@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Messenger\Query;
+namespace App\Operations\Query;
 
 use App\Infrastructure\Uuid\Uuid;
 

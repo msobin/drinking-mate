@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Messenger\QueryHandler;
+namespace App\Operations\QueryHandler;
 
-use App\Messenger\Query\GetMessagesQuery;
+use App\Operations\Query\GetMessagesQuery;
 use App\Repository\MateMessageRepository;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 

@@ -6,8 +6,8 @@ namespace App\Api\v1;
 
 use App\Entity\Mate;
 use App\Infrastructure\Uuid\Uuid;
-use App\Messenger\Query\GetMateQuery;
-use App\Messenger\Query\GetNearByQuery;
+use App\Operations\Query\GetMateQuery;
+use App\Operations\Query\GetNearByQuery;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Nelmio\ApiDocBundle\Annotation\Security;
 use OpenApi\Attributes as OA;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Messenger\Command;
+namespace App\Operations\Command;
 
 interface CommandInterface
 {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\v1\Request;
 
-use App\Messenger\Command\CommandInterface;
+use App\Operations\Command\CommandInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 final readonly class MateMessageRequest implements CommandInterface
