@@ -7,7 +7,7 @@ namespace App\Api\v1;
 use App\Api\v1\Request\WannaDrinkRequest;
 use App\Entity\Mate;
 use App\Infrastructure\Uuid\Uuid;
-use App\Operations\Command\WannaDrinkCommand;
+use App\Operation\Command\WannaDrinkCommand;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use OpenApi\Attributes as OA;
 use OpenApi\Attributes\JsonContent;

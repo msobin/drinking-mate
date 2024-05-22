@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Operations\QueryHandler;
+namespace App\Operation\QueryHandler;
 
 use App\Entity\Mate;
-use App\Operations\Query\GetMateQuery;
-use App\Operations\Query\GetNearByQuery;
+use App\Operation\Query\GetMateQuery;
+use App\Operation\Query\GetNearByQuery;
 use App\Repository\MateRepository;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 

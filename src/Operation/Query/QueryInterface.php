@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Operations\Query;
+namespace App\Operation\Query;
 
 interface QueryInterface
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Operations\CommandHandler;
+namespace App\Operation\CommandHandler;
 
 use App\Entity\Mate;
-use App\Operations\Command\WannaDrinkCommand;
+use App\Operation\Command\WannaDrinkCommand;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 

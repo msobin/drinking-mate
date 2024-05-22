@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Operations\Command;
+namespace App\Operation\Command;
 
 use App\Infrastructure\Uuid\Uuid;
 

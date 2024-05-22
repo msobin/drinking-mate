@@ -4,7 +4,7 @@ framework:
             sync: 'sync://'
 
         routing:
-            'App\Messenger\Command\CommandInterface': sync
+            'App\Operation\Command\CommandInterface': sync
 
 # when@test:
 #    framework:
