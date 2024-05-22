@@ -36,8 +36,10 @@ final class MateRepository extends ServiceEntityRepository
         $query = $this->createQueryBuilder('m')
             ->update()
             ->set('m.status', Mate::STATUS_INACTIVE)
-            ->andWhere('m.updatedAt < :ts')
+            ->andWhere('m.lastActiveAt < :ts')
+            ->andWhere('m.status = :status')
             ->setParameter('ts', time() - $mateTtl)
+            ->setParameter('status', Mate::STATUS_INACTIVE)
             ->getQuery();
 
         $query->execute();

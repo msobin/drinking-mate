@@ -42,7 +42,7 @@ class Mate implements UserInterface, \JsonSerializable
     private string $point;
 
     #[Assert\NotBlank]
-    #[ORM\Column]
+    #[ORM\Column(type: 'smallint', options: ['default' => self::STATUS_ACTIVE])]
     private int $status = self::STATUS_ACTIVE;
 
     #[Assert\NotBlank]

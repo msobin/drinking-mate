@@ -1,5 +1,5 @@
 jobs:
   - name: deactivate-mates
-    command: /var/www/bin/console mates:deactivate
+    command: /var/www/html/bin/console mates:deactivate
     schedule: "*/5 * * * *"
     concurrencyPolicy: Forbid
