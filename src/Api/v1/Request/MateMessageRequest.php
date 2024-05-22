@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Api\v1\Request;
 
-use App\Operation\Command\CommandInterface;
+use App\Operation\Command\SyncCommandInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use OpenApi\Attributes as OA;
 
-final readonly class MateMessageRequest implements CommandInterface
+final readonly class MateMessageRequest implements SyncCommandInterface
 {
     public function __construct(
         #[Assert\Uuid]

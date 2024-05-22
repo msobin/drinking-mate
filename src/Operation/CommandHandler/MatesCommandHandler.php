@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Operation\CommandHandler;
 
 use App\Entity\Mate;
-use App\Operation\Command\WannaDrinkCommand;
+use App\Operation\Command\WannaDrinkSyncCommand;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
@@ -16,7 +16,7 @@ final readonly class MatesCommandHandler
     }
 
     #[AsMessageHandler]
-    public function wannaDrink(WannaDrinkCommand $command): void
+    public function wannaDrink(WannaDrinkSyncCommand $command): void
     {
         $mate = new Mate();
 

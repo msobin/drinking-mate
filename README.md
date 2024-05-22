@@ -26,17 +26,13 @@ Cheers to new connections and unforgettable nights!
 ### Built With
 * PHP (Symfony)
 * PostgreSQL
+* RabbitMQ
 * Docker
-
-[//]: # (* [![PHP]&#40;https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white&#41;]&#40;http://php.net/&#41;)
-[//]: # (* [![Symfony]&#40;https://img.shields.io/badge/symfony-%23000000.svg?style=for-the-badge&logo=symfony&logoColor=white&#41;]&#40;https://symfony.com/&#41;)
-[//]: # (* [![Postgres]&#40;https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white&#41;]&#40;https://www.postgresql.org/&#41;)
-[//]: # (* [![Docker]&#40;https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white&#41;]&#40;https://www.docker.com/&#41;)
 
 ### Requirements
 * [Docker](https://www.docker.com/)
 * Docker-compose (comes with Docker)
-* [Task](https://taskfile.dev/)
+* [Task](https://taskfile.dev/) (task runner)
 
 ### Installation
 

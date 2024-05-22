@@ -6,7 +6,7 @@ namespace App\Operation\Command;
 
 use App\Infrastructure\Uuid\Uuid;
 
-final readonly class MateMessageCommand implements CommandInterface
+final readonly class MateMessageSyncCommand implements SyncCommandInterface
 {
     public function __construct(
         public Uuid $from,

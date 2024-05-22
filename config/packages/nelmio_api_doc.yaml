@@ -1,5 +1,7 @@
 nelmio_api_doc:
     documentation:
+        servers:
+            - url: http://localhost:80
         info:
             title: DrinkMate API
             description: API for finding drinking mates

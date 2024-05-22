@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Console;
+namespace App\Command;
 
 use App\Repository\MateRepository;
 use Symfony\Component\Console\Attribute\AsCommand;

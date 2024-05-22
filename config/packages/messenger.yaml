@@ -3,8 +3,21 @@ framework:
         transports:
             sync: 'sync://'
 
+            file_upload:
+                dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
+                options:
+                    exchange:
+                        name: drinkmate
+                        type: direct
+                    queues:
+                        file.upload: ~
+                retry_strategy:
+                    max_retries: 3
+                    delay: 1
+                    multiplier: 2
         routing:
-            'App\Operation\Command\CommandInterface': sync
+            'App\Operation\Command\SyncCommandInterface': sync
+            'App\Operation\Command\FileUploadCommand': file_upload
 
 # when@test:
 #    framework:
