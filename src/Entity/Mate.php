@@ -23,7 +23,7 @@ use OpenApi\Attributes as OA;
 class Mate implements UserInterface, \JsonSerializable
 {
     public const STATUS_ACTIVE = 1;
-    public const STATUS_INACTIVE = 0;
+    public const STATUS_INACTIVE = 2;
 
     #[ORM\Id, ORM\Column(type: UuidType::class)]
     #[OA\Property(type: 'string', format: 'uuid')]

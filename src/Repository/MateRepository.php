@@ -39,7 +39,7 @@ final class MateRepository extends ServiceEntityRepository
             ->andWhere('m.lastActiveAt < :ts')
             ->andWhere('m.status = :status')
             ->setParameter('ts', time() - $mateTtl)
-            ->setParameter('status', Mate::STATUS_INACTIVE)
+            ->setParameter('status', Mate::STATUS_ACTIVE)
             ->getQuery();
 
         $query->execute();
