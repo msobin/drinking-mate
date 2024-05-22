@@ -22,8 +22,8 @@ final readonly class MessagesCommandHandler
         $mateMessage = new MateMessage();
 
         $mateMessage->setId(Uuid::v7());
-        $mateMessage->setFromId(Uuid::fromString($command->from));
-        $mateMessage->setToId(Uuid::fromString($command->to));
+        $mateMessage->setFromId($command->from);
+        $mateMessage->setToId($command->to);
         $mateMessage->setMessage($command->message);
 
         $this->entityManager->persist($mateMessage);

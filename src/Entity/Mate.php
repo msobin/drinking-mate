@@ -10,6 +10,7 @@ use App\Repository\MateRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Jsor\Doctrine\PostGIS\Types\PostGISType;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: MateRepository::class)]
@@ -24,14 +25,17 @@ class Mate implements UserInterface, \JsonSerializable
     public const STATUS_INACTIVE = 0;
 
     #[ORM\Id, ORM\Column(type: UuidType::class)]
+    #[Groups(['api'])]
     private Uuid $id;
 
     #[ORM\Column]
     #[Assert\NotBlank, Assert\Length(min: 1, max: 255)]
+    #[Groups(['api'])]
     private string $name;
 
     #[ORM\Column]
     #[Assert\NotBlank, Assert\Length(min: 1, max: 255)]
+    #[Groups(['api'])]
     private string $description;
 
     #[ORM\Column(
@@ -51,6 +55,7 @@ class Mate implements UserInterface, \JsonSerializable
 
     #[Assert\NotBlank]
     #[ORM\Column(type: 'bigint')]
+    #[Groups(['api'])]
     private int $lastActiveAt;
 
     public function getId(): Uuid
