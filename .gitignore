@@ -1,4 +1,4 @@
-./docker-compose.override.yaml
+/.docker-compose.override.yaml
 
 ###> symfony/framework-bundle ###
 /.env.local
