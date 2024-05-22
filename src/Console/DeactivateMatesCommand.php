@@ -14,8 +14,10 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 #[AsCommand(name: 'mates:deactivate')]
 final class DeactivateMatesCommand extends Command
 {
-    public function __construct(private ParameterBagInterface $parameterBag, private MateRepository $mateRepository)
-    {
+    public function __construct(
+        private readonly ParameterBagInterface $parameterBag,
+        private readonly MateRepository $mateRepository
+    ) {
         parent::__construct();
     }
 
