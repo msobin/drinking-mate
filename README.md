@@ -1,4 +1,3 @@
-<!-- PROJECT SHIELDS -->
 [![Contributors](https://img.shields.io/github/contributors/msobin/drink-mate.svg?style=for-the-badge)](https://github.com/msobin/drink-mate/graphs/contributors)
 [![Forks](https://img.shields.io/github/forks/msobin/drink-mate.svg?style=for-the-badge)](https://github.com/msobin/drink-mate/network/members)
 [![Stargazers](https://img.shields.io/github/stars/msobin/drink-mate.svg?style=for-the-badge)](https://github.com/msobin/drink-mate/stargazers)
@@ -6,7 +5,6 @@
 [![MIT License](https://img.shields.io/github/license/msobin/drink-mate.svg?style=for-the-badge)]( https://github.com/msobin/drink-mate/blob/master/LICENSE.txt)
 [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/maximsobin)
 
-<!-- PROJECT LOGO -->
 <div align="center">
   <a href="https://github.com/msobin/drink-mate">
     <img src="images/logo.png" alt="Logo" width="161" height="168">
@@ -15,7 +13,6 @@
 <h3 align="center">DrinkingMates API</h3>
 </div>
 
-<!-- ABOUT THE PROJECT -->
 ## About The Project
 Your go-to solution for finding the perfect drinking buddy!
 Whether you're looking to share a pint with someone new or find a local companion for happy hour, DrinkingMates API has got you covered.
