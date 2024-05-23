@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Api\v1;
+namespace App\Controller\Api\v1;
 
-use App\Api\v1\Request\WannaDrinkRequest;
+use App\Controller\Api\v1\Request\WannaDrinkRequest;
 use App\Entity\Mate;
 use App\Infrastructure\Uuid\Uuid;
 use App\Operation\Command\FileUploadCommand;

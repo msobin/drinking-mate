@@ -20,4 +20,6 @@ COPY --link fpm.conf /usr/local/etc/php-fpm.d/zzz-docker.conf
 
 RUN pip install yacron
 
+RUN apk add nodejs yarn
+
 CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]

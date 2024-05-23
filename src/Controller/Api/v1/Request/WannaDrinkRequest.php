@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Api\v1\Request;
+namespace App\Controller\Api\v1\Request;
 
 use Symfony\Component\Validator\Constraints as Assert;
 

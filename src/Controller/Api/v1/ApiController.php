@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Api\v1;
+namespace App\Controller\Api\v1;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;

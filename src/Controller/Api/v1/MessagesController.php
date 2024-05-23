@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Api\v1;
+namespace App\Controller\Api\v1;
 
-use App\Api\v1\Request\MateMessageRequest;
+use App\Controller\Api\v1\Request\MateMessageRequest;
 use App\Entity\Mate;
 use App\Entity\MateMessage;
 use App\Infrastructure\Uuid\Uuid;
@@ -12,12 +12,12 @@ use App\Operation\Command\MateMessageCommand;
 use App\Operation\Query\GetMessagesQuery;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Nelmio\ApiDocBundle\Annotation\Security;
+use OpenApi\Attributes as OA;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
-use OpenApi\Attributes as OA;
 
 #[Route('/api/v1/messages')]
 #[OA\Tag(name: 'messages')]

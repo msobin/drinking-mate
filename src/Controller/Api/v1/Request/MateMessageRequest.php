@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Api\v1\Request;
+namespace App\Controller\Api\v1\Request;
 
 use App\Operation\Command\SyncCommandInterface;
-use Symfony\Component\Validator\Constraints as Assert;
 use OpenApi\Attributes as OA;
+use Symfony\Component\Validator\Constraints as Assert;
 
 final readonly class MateMessageRequest implements SyncCommandInterface
 {
