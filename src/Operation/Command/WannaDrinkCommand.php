@@ -6,7 +6,7 @@ namespace App\Operation\Command;
 
 use App\Infrastructure\Uuid\Uuid;
 
-final readonly class WannaDrinkSyncCommand implements SyncCommandInterface
+final readonly class WannaDrinkCommand implements SyncCommandInterface
 {
     public function __construct(
         public Uuid $id,

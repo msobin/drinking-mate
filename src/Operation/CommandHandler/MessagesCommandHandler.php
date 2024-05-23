@@ -6,7 +6,7 @@ namespace App\Operation\CommandHandler;
 
 use App\Entity\MateMessage;
 use App\Infrastructure\Uuid\Uuid;
-use App\Operation\Command\MateMessageSyncCommand;
+use App\Operation\Command\MateMessageCommand;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
@@ -17,7 +17,7 @@ final readonly class MessagesCommandHandler
     }
 
     #[AsMessageHandler]
-    public function mateMessage(MateMessageSyncCommand $command): void
+    public function mateMessage(MateMessageCommand $command): void
     {
         $mateMessage = new MateMessage();
 

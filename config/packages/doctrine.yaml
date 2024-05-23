@@ -10,6 +10,7 @@ doctrine:
         use_savepoints: true
         types:
             App\Infrastructure\Uuid\UuidType: App\Infrastructure\Uuid\UuidType
+            App\Infrastructure\Point\PointType: App\Infrastructure\Point\PointType
 
     orm:
         auto_generate_proxy_classes: true

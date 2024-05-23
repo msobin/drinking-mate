@@ -8,7 +8,7 @@ use App\Api\v1\Request\WannaDrinkRequest;
 use App\Entity\Mate;
 use App\Infrastructure\Uuid\Uuid;
 use App\Operation\Command\FileUploadCommand;
-use App\Operation\Command\WannaDrinkSyncCommand;
+use App\Operation\Command\WannaDrinkCommand;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Nelmio\ApiDocBundle\Annotation\Security;
 use OpenApi\Attributes as OA;
@@ -41,7 +41,7 @@ final class AuthController extends ApiController
         #[MapRequestPayload] WannaDrinkRequest $request,
         JWTTokenManagerInterface $JWTManager
     ): Response {
-        $command = new WannaDrinkSyncCommand(
+        $command = new WannaDrinkCommand(
             Uuid::v7(),
             $request->name,
             $request->description,

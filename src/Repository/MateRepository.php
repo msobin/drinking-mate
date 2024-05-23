@@ -19,7 +19,7 @@ final class MateRepository extends ServiceEntityRepository
     {
         $query = $this->createQueryBuilder('m')
             ->select('m')
-            ->andWhere('ST_Distance(m.point, :point) <= :distance')
+            ->andWhere('ST_Distance(m.point, :point, true) <= :distance')
             ->andWhere('m.id != :id')
             ->andWhere('m.status = :status')
             ->setParameter('point', $mate->getPoint())

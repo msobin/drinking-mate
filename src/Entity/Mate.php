@@ -4,21 +4,20 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Infrastructure\Point\Point;
+use App\Infrastructure\Point\PointType;
 use App\Infrastructure\Uuid\Uuid;
 use App\Infrastructure\Uuid\UuidType;
 use App\Repository\MateRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Jsor\Doctrine\PostGIS\Types\PostGISType;
+use Nelmio\ApiDocBundle\Annotation\Model;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use OpenApi\Attributes as OA;
 
 #[ORM\Entity(repositoryClass: MateRepository::class)]
-#[ORM\Index(
-    fields: ['point'],
-    flags: ['spatial'],
-)]
+#[ORM\Index(fields: ['point'])]
 #[ORM\HasLifecycleCallbacks]
 class Mate implements UserInterface, \JsonSerializable
 {
@@ -26,8 +25,7 @@ class Mate implements UserInterface, \JsonSerializable
     public const STATUS_INACTIVE = 2;
 
     #[ORM\Id, ORM\Column(type: UuidType::class)]
-    #[OA\Property(type: 'string', format: 'uuid')]
-    #[Groups(['api'])]
+    #[OA\Property(type: 'string', format: 'uuid'), Groups(['api'])]
     private Uuid $id;
 
     #[ORM\Column]
@@ -40,12 +38,10 @@ class Mate implements UserInterface, \JsonSerializable
     #[Groups(['api'])]
     private string $description;
 
-    #[ORM\Column(
-        type: PostGISType::GEOMETRY,
-        options: ['geometry_type' => 'POINT', 'srid' => 4326],
-    )]
+    #[ORM\Column(type: PointType::class)]
     #[Assert\NotBlank]
-    private string $point;
+    #[OA\Property(ref: new Model(type: Point::class), type: 'object'), Groups(['api'])]
+    private Point $point;
 
     #[Assert\NotBlank]
     #[ORM\Column(type: 'smallint', options: ['default' => self::STATUS_ACTIVE])]
@@ -57,8 +53,7 @@ class Mate implements UserInterface, \JsonSerializable
 
     #[Assert\NotBlank]
     #[ORM\Column(type: 'bigint')]
-    #[OA\Property(type: 'integer')]
-    #[Groups(['api'])]
+    #[OA\Property(type: 'integer'), Groups(['api'])]
     private int $lastActiveAt;
 
     public function getId(): Uuid
@@ -97,12 +92,12 @@ class Mate implements UserInterface, \JsonSerializable
         return $this;
     }
 
-    public function getPoint(): string
+    public function getPoint(): Point
     {
         return $this->point;
     }
 
-    public function setPoint(string $point): Mate
+    public function setPoint(Point $point): Mate
     {
         $this->point = $point;
 
@@ -175,6 +170,7 @@ class Mate implements UserInterface, \JsonSerializable
             'id' => $this->id->toString(),
             'name' => $this->name,
             'description' => $this->description,
+            'point' => $this->point,
             'lastActiveAt' => $this->lastActiveAt,
         ];
     }

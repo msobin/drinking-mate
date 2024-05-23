@@ -8,7 +8,7 @@ use App\Api\v1\Request\MateMessageRequest;
 use App\Entity\Mate;
 use App\Entity\MateMessage;
 use App\Infrastructure\Uuid\Uuid;
-use App\Operation\Command\MateMessageSyncCommand;
+use App\Operation\Command\MateMessageCommand;
 use App\Operation\Query\GetMessagesQuery;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Nelmio\ApiDocBundle\Annotation\Security;
@@ -54,7 +54,7 @@ final class MessagesController extends ApiController
     public function sendMessage(#[MapRequestPayload] MateMessageRequest $request, UserInterface $mate): Response
     {
         /** @var Mate $mate */
-        $command = new MateMessageSyncCommand(
+        $command = new MateMessageCommand(
             $mate->getId(),
             Uuid::fromString($request->to),
             $request->message

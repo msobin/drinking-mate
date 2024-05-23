@@ -59,13 +59,10 @@ services:
       - "54321:5432"
   rabbitmq:
     ports: !override
-      - "15672:15672"
+      - "15673:15672"
 ```
 
 ### Notes
 
 * The project is still in development and some features may not be fully implemented.
 
-### License
-
-[MIT](https://opensource.org/licenses/MIT)

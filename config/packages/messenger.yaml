@@ -17,7 +17,6 @@ framework:
                     multiplier: 2
         routing:
             'App\Operation\Command\SyncCommandInterface': sync
-            'App\Operation\Command\FileUploadCommand': file_upload
 
 # when@test:
 #    framework:
