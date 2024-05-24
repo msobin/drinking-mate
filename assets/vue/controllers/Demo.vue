@@ -37,8 +37,8 @@ export default {
         return {
             isWannaDrinkDisabled: false,
             me: {
-                name: 'test',
-                description: "description",
+                name: this.getName(),
+                description: this.getDescription(),
                 latitude: 51.14607,
                 longitude: 71.420922,
             },
@@ -140,8 +140,28 @@ export default {
                 shadowSize: [41, 41]
             });
         },
+        getName() {
+            const firstNames = ["James", "John", "Robert", "Michael", "William", "David", "Richard", "Joseph", "Thomas", "Charles"];
+            const lastNames = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez"];
+
+            const firstName = getRandomElement(firstNames);
+            const lastName = getRandomElement(lastNames);
+
+            return `${firstName} ${lastName}`;
+        },
+        getDescription () {
+            const adjectives = ["Happy", "Exciting", "Cozy", "Lively", "Energetic", "Noisy", "Pleasant", "Fresh", "Unusual", "Glowing"];
+            const nouns = ["evening", "party", "day", "moment", "vibe", "air", "cocktail", "bar", "relaxation", "conversation"];
+            const endings = ["at the bar", "at this place", "with friends", "in good company", "with a cocktail", "to the sound of music", "with a glass of wine", "with a smile on the face", "under the stars", "enjoying every moment"];
+
+            const adjective = getRandomElement(adjectives);
+            const noun = getRandomElement(nouns);
+            const ending = getRandomElement(endings);
+
+            return `${adjective} ${noun} ${ending}`;
+        },
         sendMessage(event) {
-        }
+        },
     },
     watch: {
         me: {
@@ -152,4 +172,9 @@ export default {
         }
     },
 }
+
+function getRandomElement(array) {
+    return array[Math.floor(Math.random() * array.length)];
+}
+
 </script>

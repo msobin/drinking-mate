@@ -22,9 +22,10 @@ tasks:
     cmds:
       - docker compose up --build --detach --remove-orphans
       - task: composer-install
-      - task: db
       - task: jwt
       - task: npm-install
+      - task: pgwait
+      - task: db
 
   db:
     deps: [composer-install]
@@ -92,7 +93,9 @@ tasks:
 
   chown: sudo chown -R $USER:$USER .
 
-  sh: "docker compose exec php sh"
+  bash: "{{.PHP}} bash"
+
+  pgwait: "{{.PHP}} wait-for-it.sh postgres:5432 -t 0"
 
   check:
     cmds:

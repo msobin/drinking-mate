@@ -3,7 +3,7 @@ FROM php:8.3-fpm-alpine3.17
 
 RUN set -eux && \
     apk update && \
-    apk add --no-cache patch py3-pip supervisor nodejs yarn npm && \
+    apk add --no-cache patch bash py3-pip supervisor nodejs yarn npm && \
     apk del && \
     rm -rf /var/lib/apt/lists/* && \
     mkdir /root/history
@@ -15,9 +15,11 @@ RUN chmod +x /usr/local/bin/install-php-extensions && \
     ln -s composer /usr/local/bin/c
 
 RUN mkdir -p /var/log/supervisord
+RUN pip install yacron
 
 COPY --link fpm.conf /usr/local/etc/php-fpm.d/zzz-docker.conf
 
-RUN pip install yacron
+COPY wait-for-it.sh /usr/local/bin/wait-for-it.sh
+RUN chmod +x /usr/local/bin/wait-for-it.sh
 
 CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]
