@@ -23,6 +23,8 @@ Simply register, mark yourself as ready to clink glasses, and discover like-mind
 No more lonely nights at the bar – with DrinkingMate API, you're just a tap away from turning strangers into friends over a drink (or two).
 Cheers to new connections and unforgettable nights!
 
+* The project is still in development and some features may not be fully implemented.
+
 ### Built With
 * PHP (Symfony)
 * JS (Vue.js)
@@ -44,7 +46,7 @@ Run the following command in project directory to start the project
    ```sh
     task up
    ```
-Open your browser and navigate to [http://localhost:80/api/v1/doc](http://localhost:80/api/v1/doc)
+Open your browser and navigate to http://localhost:80/api/v1/doc
 
 *The ports used can be overridden by creating a docker-compose.override.yaml file with the following contents:*
 ```yaml
@@ -62,7 +64,9 @@ services:
       - "15673:15672"
 ```
 
-### Notes
+### Usage
 
-* The project is still in development and some features may not be fully implemented.
+API Specification can be found at http://localhost:80/api/v1/doc
+
+Additionally, you can use the built-in demo client. Open the URL http://localhost/demo in two (or more) tabs, select a point on the map, modify the name and description fields if necessary, and click the 'Wanna drink!' button. Points located within a distance of <= 1 km will be visible to each other on the map for one hour (token lifetime).
 
