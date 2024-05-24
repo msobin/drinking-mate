@@ -2,19 +2,20 @@
 
 namespace App\Tests\Api\v1;
 
-use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
-use ApiPlatform\Symfony\Bundle\Test\Client;
 use App\Entity\Mate;
+use App\Infrastructure\Point\Point;
 use App\Infrastructure\Uuid\Uuid;
 use App\Repository\MateRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Psr\Container\ContainerInterface;
-use Symfony\Contracts\HttpClient\ResponseInterface;
+use Symfony\Bundle\FrameworkBundle\KernelBrowser;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
-class MatesControllerTest extends ApiTestCase
+class MatesControllerTest extends WebTestCase
 {
-    private Client $client;
+    private KernelBrowser $client;
     private ContainerInterface $container;
 
     protected function setUp(): void
@@ -66,7 +67,7 @@ class MatesControllerTest extends ApiTestCase
                 ->setId($id1)
                 ->setName('name2')
                 ->setDescription('description2')
-                ->setPoint('SRID=4326;POINT(71.419642 51.13324)')
+                ->setPoint(Point::fromCoordinates( 51.13324, 71.419642))
         );
 
         $em->persist(
@@ -74,21 +75,20 @@ class MatesControllerTest extends ApiTestCase
                 ->setId($id2)
                 ->setName('name3')
                 ->setDescription('description3')
-                ->setPoint('SRID=4326;POINT(71.421205 51.132798)')
-        );
+                ->setPoint(Point::fromCoordinates( 51.132798, 71.421205)));
 
         $em->persist(
             (new Mate())
                 ->setId($id3)
                 ->setName('name4')
                 ->setDescription('description4')
-                ->setPoint('SRID=4326;POINT(71.418771 51.147655)')
+                ->setPoint(Point::fromCoordinates( 51.147655, 71.418771))
         );
 
         $em->flush();
 
-        $client = static::createClient([], ['headers' => ['Authorization' => 'Bearer ' . $token]]);
-        $response = $client->request('GET', '/api/v1/mates/nearby');
+        $this->client->request('GET', '/api/v1/mates/nearby', [], [], ['HTTP_Authorization' => "Bearer $token"]);
+        $response = $this->client->getResponse();
 
         $mates = json_decode($response->getContent(), true);
         $ids = array_map(fn($mate) => $mate['id'], $mates);
@@ -98,21 +98,28 @@ class MatesControllerTest extends ApiTestCase
         $this->assertNotContains($id3->toString(), $ids);
     }
 
-    private function createMate(string $name, string $description, float $latitude, float $longitude): ResponseInterface
+    private function createMate(string $name, string $description, float $latitude, float $longitude): JsonResponse
     {
-        return $this->client->request('POST', '/api/v1/wanna-drink', [
-            'json' => [
-                'name' => $name,
-                'description' => $description,
-                'latitude' => $latitude,
-                'longitude' => $longitude
-            ]
-        ]);
+        $this->client->request(
+            'POST',
+            '/api/v1/wanna-drink',
+            [],
+            [],
+            ['CONTENT_TYPE' => 'application/json'],
+            json_encode([
+                    'name' => $name,
+                    'description' => $description,
+                    'latitude' => $latitude,
+                    'longitude' => $longitude
+                ])
+        );
+
+        return $this->client->getResponse();
     }
 
-    private function getToken(ResponseInterface $response): string
+    private function getToken(JsonResponse $response): string
     {
-        $content = $response->toArray();
+        $content = json_decode($response->getContent(), true);
 
         $this->assertArrayHasKey('token', $content);
 
