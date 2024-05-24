@@ -1,11 +1,38 @@
 <template>
+    <div class="container">
+        <div class="row align-items-start flex-fill">
+            <div class="col-2">
+                <div class="mb-3">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-control" placeholder="" v-model="me.name">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <input type="text" class="form-control" placeholder="" v-model="me.description">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Latitude</label>
+                    <input type="text" class="form-control" placeholder="" v-model="me.latitude">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Longitude</label>
+                    <input type="text" class="form-control" placeholder="" v-model="me.longitude">
+                </div>
+                <button type="submit" class="btn btn-primary mb-3" :disabled="isWannaDrinkDisabled" @click="wannaDrink">
+                    Wanna drink!
+                </button>
+            </div>
+            <div class="col-10 vh-100">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
-import {createApp} from 'vue';
 import axios from 'axios';
 
-const app = createApp({
+export default {
     data() {
         return {
             isWannaDrinkDisabled: false,
@@ -124,7 +151,5 @@ const app = createApp({
             },
         }
     },
-})
-
-app.mount('#app')
+}
 </script>

@@ -73,6 +73,8 @@ Encore
 
     // uncomment if you're having problems with a jQuery plugin
     //.autoProvidejQuery()
+
+    .addStyleEntry('demo', './assets/styles/demo.scss')
 ;
 
 module.exports = Encore.getWebpackConfig();

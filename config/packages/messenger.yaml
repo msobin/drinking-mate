@@ -7,7 +7,7 @@ framework:
                 dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
                 options:
                     exchange:
-                        name: drinkmate
+                        name: drinkingmate
                         type: direct
                     queues:
                         file.upload: ~

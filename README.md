@@ -25,8 +25,8 @@ Cheers to new connections and unforgettable nights!
 
 ### Built With
 * PHP (Symfony)
+* JS (Vue.js)
 * PostgreSQL
-* RabbitMQ
 * Docker
 
 ### Requirements
