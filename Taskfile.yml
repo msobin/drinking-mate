@@ -2,6 +2,7 @@ version: '3'
 
 vars:
   PHP: "{{if not .LOCALLY}}docker compose exec -it php{{end}}"
+  SH: "{{if not .LOCALLY}}docker compose exec -it php{{end}}"
 
 env:
   APP_ENV: dev
@@ -20,17 +21,10 @@ tasks:
   up:
     cmds:
       - docker compose up --build --detach --remove-orphans
-      - task: install
+      - task: compose-install
       - task: db
       - task: jwt
-
-  install:
-    cmd: "{{.PHP}} composer install"
-    sources:
-      - composer.json
-      - composer.lock
-    generates:
-      - vendor/autoload.php
+      - task: npm-install
 
   db:
     deps: [install]
@@ -50,6 +44,23 @@ tasks:
     generates:
       - config/jwt/private.pem
       - config/jwt/public.pem
+
+  composer-install:
+    cmd: "{{.PHP}} composer install"
+    sources:
+      - composer.json
+      - composer.lock
+    generates:
+      - vendor/autoload.php
+
+  npm-install:
+    cmds:
+      - "{{.PHP}} npm install"
+      - "{{.PHP}} npm run dev"
+    status:
+      - test -f node_modules/.package-lock.json
+    generates:
+      - node_modules/.package-lock.json
 
   composer-validate: "{{.PHP}} composer validate --strict --no-check-publish"
 
