@@ -21,13 +21,13 @@ tasks:
   up:
     cmds:
       - docker compose up --build --detach --remove-orphans
-      - task: compose-install
+      - task: composer-install
       - task: db
       - task: jwt
       - task: npm-install
 
   db:
-    deps: [install]
+    deps: [composer-install]
     cmds:
       - "{{.PHP}} bin/console doctrine:database:create --if-not-exists"
       - "{{.PHP}} bin/console doctrine:migrations:migrate --no-interaction"
@@ -65,23 +65,23 @@ tasks:
   composer-validate: "{{.PHP}} composer validate --strict --no-check-publish"
 
   composer-require:
-    deps: [install]
+    deps: [composer-install]
     cmd: "{{.PHP}} vendor/bin/composer-require-checker check"
 
   composer-unused:
-    deps: [install]
+    deps: [composer-install]
     cmd: "{{.PHP}} vendor/bin/composer-unused"
 
   composer-audit: "{{.PHP}} composer audit"
 
   composer-normalize:
-    deps: [ install ]
+    deps: [composer-install]
     cmds:
       - "{{.PHP}} composer bump --dry-run"
       - "{{.PHP}} composer normalize --dry-run --diff"
 
   composer-normalize-fix:
-    deps: [ install ]
+    deps: [composer-install]
     cmds:
       - "{{.PHP}} composer bump"
       - "{{.PHP}} composer normalize"
