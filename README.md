@@ -23,7 +23,7 @@ Simply register, mark yourself as ready to clink glasses, and discover like-mind
 No more lonely nights at the bar – with DrinkingMate API, you're just a tap away from turning strangers into friends over a drink (or two).
 Cheers to new connections and unforgettable nights!
 
-* The project is still in development and some features may not be fully implemented.
+*The project is still in development and some features may not be fully implemented.*
 
 ### Built With
 * PHP (Symfony)
